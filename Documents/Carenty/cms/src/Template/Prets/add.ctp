@@ -4,7 +4,7 @@
  * @var \App\Model\Entity\Pret $pret
  */
 ?>
-<?php echo $this->element('toolmenu'); ?>
+<?php echo $this->element('menu'); ?>
 <div class="prets form large-9 medium-8 columns content">
     <?= $this->Form->create($pret) ?>
     <fieldset>

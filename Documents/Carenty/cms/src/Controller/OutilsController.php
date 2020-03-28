@@ -38,11 +38,11 @@ class OutilsController extends AppController
      */
     public function view($id = null)
     {
-        $outil = $this->Outils->get($id, [
-            'contain' => [],
-        ]);
-
-        $this->set('outil', $outil);
+        $this->loadModel('Commentaire');
+        $outil = $this->Outils->get($id);
+        $comments = $this->Commentaire->find()->where(['modele_id' => 1, 'object_id' => $id])->contain(['Visiteurs']);
+        $commentEnabled = ($outil->visiteur_id == $this->Auth->user('id'))?FALSE:TRUE;
+        $this->set(compact('outil', 'comments','commentEnabled'));
     }
 
     /**

@@ -4,7 +4,7 @@
  * @var \App\Model\Entity\Outil[]|\Cake\Collection\CollectionInterface $outils
  */
 ?>
-<?php echo $this->element('toolmenu'); ?>
+<?php echo $this->element('menu'); ?>
 <div class="outils index large-9 medium-8 columns content">
     <h3><?= __('My Tools') ?></h3>
     <table cellpadding="0" cellspacing="0">
@@ -21,7 +21,7 @@
             <?php foreach ($outils as $outil): ?>
             <tr>
                 <td><?= h($outil->nom) ?></td>
-                <td><?= $outil->has('type_disponibilite') ? $outil->type_disponibilite->id : '' ?></td>
+                <td><?= $outil->has('type_disponibilite') ? $outil->type_disponibilite->nom : '' ?></td>
                 <td><?= h($outil->modele) ?></td>
                 <td><?= h($outil->nro_serie) ?></td>
                 <td class="actions">

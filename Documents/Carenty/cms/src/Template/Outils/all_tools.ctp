@@ -4,7 +4,7 @@
  * @var \App\Model\Entity\Outil[]|\Cake\Collection\CollectionInterface $outils
  */
 ?>
-<?php echo $this->element('toolmenu'); ?>
+<?php echo $this->element('menu'); ?>
 <div class="outils index large-9 medium-8 columns content">
     <h3><?= __('Browse Tools') ?></h3>
     <table cellpadding="0" cellspacing="0">

@@ -37,16 +37,22 @@ class PretsTable extends Table
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
 
-        $this->belongsTo('Visiteurs', [
-            'foreignKey' => 'donneur_id',
-            'joinType' => 'INNER',
-        ]);
-        $this->belongsTo('Visiteurs', [
-            'foreignKey' => 'receveur_id',
-            'joinType' => 'INNER',
-        ]);
+        $this->belongsTo('Givers', [ 
+            'className' => 'Visiteurs', 
+            'foreignKey' => 'donneur_id', 
+            'propertyName' => 'Giver']);
+
+        $this->belongsTo('Receivers', [ 
+           'className' => 'Visiteurs',                      
+           'foreignKey' => 'receveur_id', 
+           'propertyName' => 'Receiver']);
+
         $this->belongsTo('Outils', [
             'foreignKey' => 'outil_id',
+            'joinType' => 'INNER',
+        ]);
+        $this->belongsTo('StatusPrets', [
+            'foreignKey' => 'status',
             'joinType' => 'INNER',
         ]);
     }
@@ -89,8 +95,8 @@ class PretsTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->existsIn(['donneur_id'], 'Visiteurs'));
-        $rules->add($rules->existsIn(['receveur_id'], 'Visiteurs'));
+        $rules->add($rules->existsIn(['donneur_id'], 'Givers'));
+        $rules->add($rules->existsIn(['receveur_id'], 'Receivers'));
 
         return $rules;
     }

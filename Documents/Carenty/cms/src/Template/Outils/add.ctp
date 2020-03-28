@@ -4,7 +4,7 @@
  * @var \App\Model\Entity\Outil $outil
  */
 ?>
-<?php echo $this->element('toolmenu'); ?>
+<?php echo $this->element('menu'); ?>
 <div class="outils form large-9 medium-8 columns content">
     <?= $this->Form->create($outil) ?>
     <fieldset>
